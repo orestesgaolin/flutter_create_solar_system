@@ -18,7 +18,7 @@ class HP extends StatefulWidget {
   _HPState createState() => _HPState();
 }
 
-class Planet {
+class Plnt {
   int i;
   String nm;
   double sz;
@@ -27,37 +27,34 @@ class Planet {
   Color clr;
   Animation<double> an;
   bool v = false;
-  Planet(this.i, this.nm, this.sz, this.rd, this.clr);
+  Plnt(this.i, this.nm, this.sz, this.rd, this.clr);
 }
 
 class _HPState extends State<HP> with SingleTickerProviderStateMixin {
   AnimationController ctrl;
-  List<Planet> planets = [];
-
+  List<Plnt> ps = [];
   @override
   void initState() {
     super.initState();
     ctrl = AnimationController(duration: const Duration(seconds: 20), vsync: this);
-
-    planets = [
-      Planet(0, 'uran', 16, 200, Colors.grey),
-      Planet(1, 'venus', 38, 480, Colors.orange),
-      Planet(2, 'earth2', 40, 800, Colors.blue),
-      Planet(3, 'mars', 22, 1000, Colors.red),
-      Planet(4, 'jupiter', 100, 1600, Colors.orange),
-      Planet(5, 'earth', 40, 2000, Colors.blue),
-      Planet(6, 'earth', 40, 2500, Colors.blue),
-      Planet(7, 'pluto', 20, 3050, Colors.blue),
+    ps = [
+      Plnt(0, 'uran', 16, 200, Colors.grey),
+      Plnt(1, 'venus', 38, 480, Colors.orange),
+      Plnt(2, 'earth2', 40, 800, Colors.blue),
+      Plnt(3, 'mars', 22, 1000, Colors.red),
+      Plnt(4, 'jupiter', 100, 1600, Colors.orange),
+      Plnt(5, 'earth', 40, 2000, Colors.deepOrange),
+      Plnt(6, 'earth', 40, 2500, Colors.purple),
+      Plnt(7, 'pluto', 20, 3050, Colors.grey),
     ];
-    planets.forEach((f) => addTween(f));
-
+    ps.forEach((f) => addTween(f));
     ctrl.forward();
   }
 
   @override
   Widget build(BuildContext context) {
-    var pStck = planets.map((p) => Orbit(p, ctrl, setState) as Widget).toList();
-    if (planets.any((n) => n.v == true)) {
+    var pStck = ps.map((p) => Orbt(p, ctrl, setState) as Widget).toList();
+    if (ps.any((n) => n.v == true)) {
       pStck.add(IgnorePointer(
         child: ClipRect(
           child: BackdropFilter(
@@ -70,6 +67,15 @@ class _HPState extends State<HP> with SingleTickerProviderStateMixin {
       ));
     }
 
+    pStck.add(AnimatedOpacity(
+      opacity: ctrl.value,
+      duration: Duration(seconds: 10),
+      child: Text(
+        "\nLet' go for a ride through space!",
+        style: TextStyle(fontSize: 40, color: Colors.white, fontStyle: FontStyle.italic),
+        textAlign: TextAlign.center,
+      ),
+    ));
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -78,11 +84,11 @@ class _HPState extends State<HP> with SingleTickerProviderStateMixin {
           child: GestureDetector(
             onTap: () {
               ctrl.forward();
-              planets.forEach((n) => n.v = false);
+              ps.forEach((n) => n.v = false);
             },
             child: Container(
               decoration: BoxDecoration(color: Colors.black),
-              width: 500,
+              width: 400,
               height: 2000,
               child: Stack(
                 children: pStck,
@@ -94,14 +100,14 @@ class _HPState extends State<HP> with SingleTickerProviderStateMixin {
     );
   }
 
-  void addTween(Planet f) {
-    var begin = f.i > 2 ? atan(600 / f.rd) : pi;
-    var tween = Tween<double>(begin: 1.4 * pi - begin, end: 1.55 * pi).animate(
+  void addTween(Plnt f) {
+    var begin = f.i > 2 ? atan(400 / f.rd) : pi;
+    var tween = Tween<double>(begin: 1.35 * pi - begin, end: 1.55 * pi).animate(
       CurvedAnimation(
         parent: ctrl,
         curve: Interval(
-          f.i%2 == 0 ? 0.0 : 0.2,
-          f.i%2 == 0 ? 0.8 : 1.0,
+          f.i % 2 == 0 ? 0.0 : 0.1,
+          f.i % 2 == 0 ? 0.9 : 1.0,
         ),
       ),
     )
@@ -123,30 +129,40 @@ class _HPState extends State<HP> with SingleTickerProviderStateMixin {
   }
 }
 
-class Orbit extends StatelessWidget {
-  Planet planet;
+class Orbt extends StatelessWidget {
+  Plnt p;
   AnimationController ctrl;
   void Function(VoidCallback fn) setState;
-
-  Orbit(
-    this.planet,
+  Orbt(
+    this.p,
     this.ctrl,
     this.setState, {
     Key key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
+        // Positioned(
+        //   right: 0,
+        //   bottom: 0,
+        //   child: CustomPaint(
+        //     foregroundPainter: MyPainter(p.clr, p.sz, p.an),
+        //     child: SizedBox(
+        //       width: p.rd,
+        //       height: p.rd,
+        //     ),
+        //   ),
+        // ),
         Positioned(
-          right: 0,
-          bottom: 0,
-          child: CustomPaint(
-            foregroundPainter: MyPainter(planet.clr, planet.sz, planet.an),
-            child: SizedBox(
-              width: planet.rd,
-              height: planet.rd,
+          right: -p.rd/2,
+          bottom: -p.rd/2,
+          child: Container(
+            width: p.rd,
+            height: p.rd,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: p.clr, width: 1)
             ),
           ),
         ),
@@ -155,14 +171,12 @@ class Orbit extends StatelessWidget {
           bottom: 0,
           child: Transform(
             transform: Matrix4.translationValues(
-                planet.rd / 2 * cos(planet.an.value) + planet.sz / 2,
-                planet.rd / 2 * sin(planet.an.value) + planet.sz / 2,
-                0),
+                p.rd / 2 * cos(p.an.value) + p.sz / 2, p.rd / 2 * sin(p.an.value) + p.sz / 2, 0),
             child: Container(
-              width: planet.sz,
-              height: planet.sz,
+              width: p.sz,
+              height: p.sz,
               child: RotationTransition(
-                turns: planet.an,
+                turns: p.an,
                 child: GestureDetector(
                   onTap: () async {
                     if (ctrl.velocity > 0.02)
@@ -170,12 +184,11 @@ class Orbit extends StatelessWidget {
                     else
                       ctrl.forward();
                     setState(() {
-                      planet.v = !planet.v;
+                      p.v = !p.v;
                     });
-                    // Navigator.of(context).push(FadeRouteBuilder(page: NewPage()));
                   },
                   child: Image.asset(
-                    'assets/${planet.nm}.png',
+                    'assets/${p.nm}.png',
                   ),
                 ),
               ),
@@ -188,11 +201,10 @@ class Orbit extends StatelessWidget {
 }
 
 class FadeRouteBuilder<T> extends PageRouteBuilder<T> {
-  final Widget page;
-
-  FadeRouteBuilder({@required this.page})
+  final Widget p;
+  FadeRouteBuilder({@required this.p})
       : super(
-          pageBuilder: (context, a1, a2) => page,
+          pageBuilder: (context, a1, a2) => p,
           transitionsBuilder: (context, a1, a2, child) {
             return FadeTransition(opacity: a1, child: child);
           },
@@ -200,26 +212,23 @@ class FadeRouteBuilder<T> extends PageRouteBuilder<T> {
 }
 
 class MyPainter extends CustomPainter {
-  Color lineColor;
-  double width;
-  Animation<double> animation;
-
-  MyPainter(this.lineColor, this.width, this.animation);
+  Color lC;
+  double w;
+  Animation<double> a;
+  MyPainter(this.lC, this.w, this.a);
   @override
-  void paint(Canvas canvas, Size size) {
-    Paint line = new Paint()
-      ..color = lineColor.withAlpha(80)
+  void paint(Canvas c, Size s) {
+    Paint l = new Paint()
+      ..color = lC.withAlpha(80)
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
-    // Offset center = new Offset(size.width, size.height);
-    // double radius = min(size.width / 2, size.height / 2);
-    Rect rect = new Rect.fromLTWH(size.width / 2, size.height / 2, size.width, size.height);
-    canvas.drawOval(rect, line);
+    Rect r = new Rect.fromLTWH(s.width / 2, s.height / 2, s.width, s.height);
+    c.drawOval(r, l);
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
+  bool shouldRepaint(CustomPainter oD) {
     return true;
   }
 }
