@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -23,58 +24,73 @@ class HomePage extends StatefulWidget {
 class Plnt {
   int i;
   String nm;
+  String fl;
   double sz;
   double rd;
-  double pd;
   Color clr;
-  double op;
-  Plnt(this.i, this.nm, this.sz, this.rd, this.clr);
+  Plnt(this.i, Map<String, dynamic> data, this.clr) {
+    nm = data['name'];
+    fl = data['file'];
+    sz = data['sz'];
+    rd = data['rd'];
+  }
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage> {
+  Map<String, dynamic> data;
   List<Plnt> ps = [];
   bool blur;
   @override
   void initState() {
     super.initState();
-    ps = [
-      Plnt(0, 'uran', 16, 200, Colors.grey),
-      Plnt(1, 'venus', 38, 480, Colors.orange),
-      Plnt(2, 'earth2', 40, 800, Colors.blue),
-      Plnt(3, 'mars', 22, 1000, Colors.red),
-      Plnt(4, 'jupiter', 100, 1600, Colors.orange),
-      Plnt(5, 'earth', 40, 2000, Colors.deepOrange),
-      Plnt(6, 'earth', 40, 2500, Colors.purple),
-      Plnt(7, 'pluto', 20, 3050, Colors.grey),
-    ];
+    DefaultAssetBundle.of(context).loadString('data.json').then(
+      (s) {
+        data = json.decode(s);
+        setState(
+          () {
+            ps = [
+              Plnt(0, data['0'], Colors.grey),
+              Plnt(1, data['1'], Colors.orange),
+              Plnt(2, data['2'], Colors.blue),
+              // Plnt(3, 'mars', 22, 1000, Colors.red),
+              // Plnt(4, 'jupiter', 100, 1600, Colors.orange),
+              // Plnt(5, 'earth', 40, 2000, Colors.deepOrange),
+              // Plnt(6, 'earth', 40, 2500, Colors.purple),
+              // Plnt(7, 'pluto', 20, 3050, Colors.grey),
+            ];
+          },
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    if (data == null) return Container();
+
     var pStck = ps.map((p) => Orbt(p, setState) as Widget).toList();
 
-    pStck.add(AnimatedOpacity(
-      opacity: 1,
-      duration: Duration(seconds: 10),
-      child: Text(
-        "\nLet's go for a ride through space!",
-        style: TextStyle(fontSize: 40, color: Colors.white, fontStyle: FontStyle.italic),
-        textAlign: TextAlign.center,
-      ),
+    pStck.add(Text(
+      data['title'],
+      style: TextStyle(fontSize: 40, color: Colors.white, fontStyle: FontStyle.italic),
+      textAlign: TextAlign.center,
     ));
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          child: GestureDetector(
-            onTap: () {},
-            child: Container(
-              decoration: BoxDecoration(color: Colors.black),
-              width: 400,
-              height: 2000,
-              child: Stack(
-                children: pStck,
+          scrollDirection: Axis.horizontal,
+          child: SingleChildScrollView(
+            physics: ClampingScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            child: GestureDetector(
+              onTap: () {},
+              child: Container(
+                decoration: BoxDecoration(color: Colors.black),
+                width: 1500,
+                height: 2000,
+                child: Stack(
+                  children: pStck,
+                ),
               ),
             ),
           ),
@@ -95,7 +111,7 @@ class Orbt extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final AnimationController controller = useAnimationController(
-      duration: Duration(seconds: 10),
+      duration: Duration(seconds: p.i * 4 + 2),
       lowerBound: 2.8,
       upperBound: 5,
     );
@@ -103,7 +119,6 @@ class Orbt extends HookWidget {
       controller.repeat();
     }, [controller]);
     double value = useAnimation(controller);
-
     return Stack(
       children: <Widget>[
         Positioned(
@@ -139,6 +154,7 @@ class Orbt extends HookWidget {
                       Navigator.of(context).push(
                         PageRouteBuilder(
                           opaque: false,
+                          transitionDuration: Duration(milliseconds: 600),
                           barrierDismissible: true,
                           pageBuilder: (context, _, __) {
                             return BackdropFilter(
@@ -146,9 +162,13 @@ class Orbt extends HookWidget {
                               child: Scaffold(
                                 body: Center(
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                      Text(p.nm, style: TextStyle(color: Colors.white)),
-                                      Hero(tag: p.i, child: Image.asset('assets/${p.nm}.png'))
+                                      Text(
+                                        p.nm,
+                                        style: TextStyle(color: Colors.white, fontSize: 40),
+                                      ),
+                                      Hero(tag: p.i, child: Image.asset(p.fl))
                                     ],
                                   ),
                                 ),
@@ -161,7 +181,7 @@ class Orbt extends HookWidget {
                     child: Hero(
                       tag: p.i,
                       child: Image.asset(
-                        'assets/${p.nm}.png',
+                        p.fl,
                       ),
                     )),
               ),

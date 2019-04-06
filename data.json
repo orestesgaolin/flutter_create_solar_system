@@ -1,0 +1,41 @@
+{
+  "0": {
+    "id": "0",
+    "name": "Mercury",
+    "file": "assets/mercury.png",
+    "flr": "assets/mercury.flr",
+    "sz": 16.0,
+    "rd": 200.0,
+    "m": "3.3011×1023 kg (0.055 Earths)",
+    "er": "2,439.7±1.0 km",
+    "desc": "Mercury (0.4 AU from the Sun) is the closest planet to the Sun and on average, all seven other planets. The smallest planet in the Solar System (0.055 M⊕), Mercury has no natural satellites. Besides impact craters, its only known geological features are lobed ridges or rupes that were probably produced by a period of contraction early in its history. Mercury's very tenuous atmosphere consists of atoms blasted off its surface by the solar wind. Its relatively large iron core and thin mantle have not yet been adequately explained. Hypotheses include that its outer layers were stripped off by a giant impact, or that it was prevented from fully accreting by the young Sun's energy.",
+    "url": "https://en.wikipedia.org/wiki/Mercury_(planet)"
+  },
+  "1": {
+    "id": "1",
+    "name": "Venus",
+    "file": "assets/venus.png",
+    "flr": "assets/venus.flr",
+    "sz": 38.0,
+    "rd": 480.0,
+    "m": "4.8675×1024 kg (0.815 Earths)",
+    "er": "6,051.8±1.0 km",
+    "desc": "Venus (0.7 AU from the Sun) is close in size to Earth (0.815 M⊕) and, like Earth, has a thick silicate mantle around an iron core, a substantial atmosphere, and evidence of internal geological activity. It is much drier than Earth, and its atmosphere is ninety times as dense. Venus has no natural satellites. It is the hottest planet, with surface temperatures over 400 °C (752 °F), most likely due to the amount of greenhouse gases in the atmosphere. No definitive evidence of current geological activity has been detected on Venus, but it has no magnetic field that would prevent depletion of its substantial atmosphere, which suggests that its atmosphere is being replenished by volcanic eruptions.",
+    "url": "https://en.wikipedia.org/wiki/Venus"
+  },
+  "2": {
+    "id": 2,
+    "name": "Earth",
+    "file": "assets/earth.png",
+    "flr": "assets/earth.flr",
+    "sz": 40.0,
+    "rd": 800.0,
+    "m": "5.97237 * 10^24 kg",
+    "er": "6378.1 km",
+    "desc": "Earth (1 AU from the Sun) is the largest and densest of the inner planets the only one known to have current geological activity, and the only place where life is known to exist. Its liquid hydrosphere is unique among the terrestrial planets, and it is the only planet where plate tectonics has been observed. Earth's atmosphere is radically different from those of the other planets, having been altered by the presence of life to contain 21% free oxygen. It has one natural satellite, the Moon, the only large satellite of a terrestrial planet in the Solar System.",
+    "url": "https://en.wikipedia.org/wiki/Earth"
+  },
+  "title": "Let's go for a ride through space",
+  "datasource": "https://en.wikipedia.org/wiki/Solar_System",
+  "info": "All the data about Solar System planets taken from Wikipedia"
+}

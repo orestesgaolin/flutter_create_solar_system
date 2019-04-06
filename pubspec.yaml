@@ -44,15 +44,16 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/circle.svg
-   - assets/uran.png
-   - assets/mars.png
-   - assets/earth.png
-   - assets/jupiter.png
+   - data.json
+   - assets/mercury.png
    - assets/venus.png
-   - assets/earth2.png
+   - assets/earth.png
+   - assets/mars.png
+   - assets/jupiter.png
+   - assets/saturn.png
+   - assets/uranus.png
    - assets/pluto.png
-  #  - images/a_dot_ham.jpeg
+   - assets/bulb.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
