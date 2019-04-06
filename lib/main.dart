@@ -6,21 +6,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 void main() => runApp(MA());
 
-class MA extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(canvasColor: Colors.transparent),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
 class Plnt {
   int i;
   String nm;
@@ -28,15 +13,21 @@ class Plnt {
   double sz;
   double rd;
   Color clr;
-  Plnt(this.i, Map<String, dynamic> data, this.clr) {
-    nm = data['name'];
-    fl = data['file'];
-    sz = data['sz'];
-    rd = data['rd'];
+  String ds;
+  Plnt(this.i, Map<String, dynamic> d, this.clr) {
+    nm = d['name'];
+    fl = d['file'];
+    sz = d['sz'];
+    rd = d['rd'];
+    ds = d['desc'];
   }
 }
 
-class _HomePageState extends State<HomePage> {
+class MA extends StatefulWidget {
+  _MAState createState() => _MAState();
+}
+
+class _MAState extends State<MA> {
   Map<String, dynamic> data;
   List<Plnt> ps = [];
   bool blur;
@@ -52,11 +43,12 @@ class _HomePageState extends State<HomePage> {
               Plnt(0, data['0'], Colors.grey),
               Plnt(1, data['1'], Colors.orange),
               Plnt(2, data['2'], Colors.blue),
-              // Plnt(3, 'mars', 22, 1000, Colors.red),
-              // Plnt(4, 'jupiter', 100, 1600, Colors.orange),
-              // Plnt(5, 'earth', 40, 2000, Colors.deepOrange),
-              // Plnt(6, 'earth', 40, 2500, Colors.purple),
-              // Plnt(7, 'pluto', 20, 3050, Colors.grey),
+              Plnt(3, data['3'], Colors.red),
+              Plnt(4, data['4'], Colors.brown),
+              Plnt(5, data['5'], Colors.yellow),
+              Plnt(6, data['6'], Colors.blue),
+              Plnt(7, data['7'], Colors.cyan),
+              Plnt(8, data['8'], Colors.grey),
             ];
           },
         );
@@ -72,24 +64,30 @@ class _HomePageState extends State<HomePage> {
 
     pStck.add(Text(
       data['title'],
-      style: TextStyle(fontSize: 40, color: Colors.white, fontStyle: FontStyle.italic),
+      style: TextStyle(fontSize: 40),
       textAlign: TextAlign.center,
     ));
-    return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
+    return MaterialApp(
+      theme:
+          ThemeData(canvasColor: Colors.transparent, brightness: Brightness.dark, fontFamily: 'j'),
+      home: Scaffold(
+        body: Center(
           child: SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(color: Colors.black),
-                width: 1500,
-                height: 2000,
-                child: Stack(
-                  children: pStck,
+            scrollDirection: Axis.horizontal,
+            child: SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      image: DecorationImage(image: AssetImage(data['bg']), fit: BoxFit.cover)),
+                  width: 2000,
+                  height: 3000,
+                  child: Stack(
+                    children: pStck,
+                  ),
                 ),
               ),
             ),
@@ -154,22 +152,29 @@ class Orbt extends HookWidget {
                       Navigator.of(context).push(
                         PageRouteBuilder(
                           opaque: false,
-                          transitionDuration: Duration(milliseconds: 600),
+                          // transitionDuration: Duration(milliseconds: 600),
                           barrierDismissible: true,
                           pageBuilder: (context, _, __) {
-                            return BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                              child: Scaffold(
-                                body: Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text(
-                                        p.nm,
-                                        style: TextStyle(color: Colors.white, fontSize: 40),
+                            return GestureDetector(
+                              onTap: () => Navigator.pop(context),
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
+                                child: Scaffold(
+                                  body: GestureDetector(
+                                    onTap: () => Navigator.pop(context),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(30),
+                                      child: ListView(
+                                        children: <Widget>[
+                                          Text(
+                                            p.nm,
+                                            style: TextStyle(fontSize: 40, fontFamily: 'b'),
+                                          ),
+                                          Hero(tag: p.i, child: Image.asset(p.fl)),
+                                          txt(p.ds),
+                                        ],
                                       ),
-                                      Hero(tag: p.i, child: Image.asset(p.fl))
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -189,6 +194,13 @@ class Orbt extends HookWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Padding txt(String d) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(d),
     );
   }
 }
