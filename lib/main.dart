@@ -14,14 +14,14 @@ class Pt {
   double s, r;
   Color c;
   Pt(Map<String, dynamic> d, this.c) {
-    n = d['name'];
+    n = d['n'];
     y = d['y'];
-    f = d['file'];
-    l = d['flr'];
-    s = d['sz'] / 11;
-    r = d['rd'] / 11;
-    ds = d['desc'];
-    i = d['id'];
+    f = d['f'];
+    l = d['l'];
+    s = d['s'] / 12;
+    r = d['r'] / 12;
+    ds = d['d'];
+    i = d['i'];
   }
 }
 
@@ -180,6 +180,7 @@ class Ot extends HookWidget {
                                 p.l,
                                 alignment: Alignment.center,
                                 fit: BoxFit.contain,
+                                animation: '1',
                               )),
                         ),
                         Padding(
