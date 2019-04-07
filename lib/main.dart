@@ -46,15 +46,15 @@ class _MAState extends State<MA> {
         setState(
           () {
             ps = [
-              Pt(data['0'], Colors.grey),
-              Pt(data['1'], Colors.orange),
-              Pt(data['2'], Colors.blue),
-              Pt(data['3'], Colors.red),
-              Pt(data['4'], Colors.brown),
-              Pt(data['5'], Colors.yellow),
-              Pt(data['6'], Colors.blue),
-              Pt(data['7'], Colors.cyan),
               Pt(data['8'], Colors.grey),
+              Pt(data['7'], Colors.cyan),
+              Pt(data['6'], Colors.blue),
+              Pt(data['5'], Colors.yellow),
+              Pt(data['4'], Colors.brown),
+              Pt(data['3'], Colors.red),
+              Pt(data['2'], Colors.blue),
+              Pt(data['1'], Colors.orange),
+              Pt(data['0'], Colors.grey),
             ];
           },
         );
@@ -74,7 +74,7 @@ class _MAState extends State<MA> {
       home: Scaffold(
         body: MatrixGestureDetector(
           shouldRotate: false,
-          clipChild: false,
+          clipChild: true,
           onMatrixUpdate: (m, tm, sm, rm) {
             notifier.value = m;
           },
@@ -88,14 +88,11 @@ class _MAState extends State<MA> {
                 return Transform(
                   transform: notifier.value,
                   child: OverflowBox(
-                    maxHeight: 5000,
+
                     maxWidth: 5000,
-                    child: Container(
-                      width: 1000,
-                      height: 1000,
-                      child: Stack(
-                        children: pStck,
-                      ),
+                    maxHeight: 5000,
+                    child: Stack(
+                      children: pStck,
                     ),
                   ),
                 );
@@ -127,90 +124,86 @@ class Ot extends HookWidget {
       ctrl.repeat();
     }, [ctrl]);
     double value = useAnimation(ctrl);
-    return Stack(
-      children: <Widget>[
-        IgnorePointer(
-          child: Center(
-            child: AnimatedContainer(
-              duration: Duration(seconds: 1),
-              width: p.rd,
-              height: p.rd,
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, border: Border.all(color: p.clr, width: 1)),
-            ),
-          ),
-        ),
-        Center(
+    return Center(
+      child: Container(
+        width: p.rd,
+        height: p.rd,
+        decoration:
+            BoxDecoration(shape: BoxShape.circle, border: Border.all(color: p.clr, width: 1)),
+        child: Center(
           child: Transform(
             transform: Matrix4.translationValues(
               p.rd / 2 * cos(value),
               p.rd / 2 * sin(value),
               0,
             ),
-            child: AnimatedContainer(
-              duration: Duration(seconds: 1),
-              width: p.sz,
-              height: p.sz,
-              child: RotationTransition(
-                turns: ctrl,
-                child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        PageRouteBuilder(
-                          opaque: false,
-                          barrierDismissible: true,
-                          pageBuilder: (context, _, __) {
-                            return GestureDetector(
-                              onTap: () => Navigator.pop(context),
-                              child: BackdropFilter(
-                                filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
-                                child: Scaffold(
-                                  body: GestureDetector(
-                                    onTap: () => Navigator.pop(context),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(30),
-                                      child: ListView(
-                                        children: <Widget>[
-                                          Text(
-                                            p.nm,
-                                            style: TextStyle(fontSize: 40, fontFamily: 'b'),
-                                          ),
-                                          Hero(
-                                            tag: p.i,
-                                            child: Container(
-                                                width: 200,
-                                                height: 200,
-                                                child: FlareActor("assets/earth.flr",
-                                                    alignment: Alignment.center,
-                                                    fit: BoxFit.contain,
-                                                    animation: "earth")),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(p.ds),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    },
-                    child: Hero(
-                      tag: p.i,
-                      child: Image.asset(
-                        p.fl,
-                      ),
-                    )),
+            child: GestureDetector(
+              onTap: () => tap(context),
+              child: AnimatedContainer(
+                duration: Duration(seconds: 1),
+                width: p.sz,
+                height: p.sz,
+                child: RotationTransition(
+                  turns: ctrl,
+                  child: Hero(
+                    tag: p.i,
+                    child: Image.asset(
+                      p.fl,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
         ),
-      ],
+      ),
+    );
+  }
+
+  void tap(BuildContext context) {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        opaque: false,
+        barrierDismissible: true,
+        pageBuilder: (context, _, __) {
+          return GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
+              child: Scaffold(
+                body: GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Padding(
+                    padding: EdgeInsets.all(30),
+                    child: ListView(
+                      children: <Widget>[
+                        Text(
+                          p.nm,
+                          style: TextStyle(fontSize: 40, fontFamily: 'b'),
+                        ),
+                        Hero(
+                          tag: p.i,
+                          child: Container(
+                              width: 200,
+                              height: 200,
+                              child: FlareActor("assets/earth.flr",
+                                  alignment: Alignment.center,
+                                  fit: BoxFit.contain,
+                                  animation: "earth")),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(p.ds),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
