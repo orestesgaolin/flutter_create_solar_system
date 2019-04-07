@@ -22,6 +22,7 @@ dependencies:
   rect_getter: 0.0.1
   flutter_hooks: ^0.2.1
   matrix_gesture_detector: ^0.1.0
+  flare_flutter: ^1.3.7
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -49,6 +50,7 @@ flutter:
    - assets/mercury.png
    - assets/venus.png
    - assets/earth.png
+   - assets/earth.flr
    - assets/mars.png
    - assets/jupiter.png
    - assets/saturn.png

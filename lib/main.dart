@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:matrix_gesture_detector/matrix_gesture_detector.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 void main() => runApp(MA());
 
@@ -174,7 +175,16 @@ class Ot extends HookWidget {
                                             p.nm,
                                             style: TextStyle(fontSize: 40, fontFamily: 'b'),
                                           ),
-                                          Hero(tag: p.i, child: Image.asset(p.fl)),
+                                          Hero(
+                                            tag: p.i,
+                                            child: Container(
+                                                width: 200,
+                                                height: 200,
+                                                child: FlareActor("assets/earth.flr",
+                                                    alignment: Alignment.center,
+                                                    fit: BoxFit.contain,
+                                                    animation: "earth")),
+                                          ),
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(p.ds),
