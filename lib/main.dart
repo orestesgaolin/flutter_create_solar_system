@@ -17,7 +17,7 @@ class Pt {
     n = d['name'];
     y = d['y'];
     f = d['file'];
-    // l = d['flr'];
+    l = d['flr'];
     s = d['sz'] / 11;
     r = d['rd'] / 11;
     ds = d['desc'];
@@ -177,14 +177,13 @@ class Ot extends HookWidget {
                               width: 200,
                               height: 200,
                               child: FlareActor(
-                                'assets/anim.flr',
+                                p.l,
                                 alignment: Alignment.center,
                                 fit: BoxFit.contain,
-                                animation: p.n,
                               )),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Text(p.ds),
                         ),
                       ],
