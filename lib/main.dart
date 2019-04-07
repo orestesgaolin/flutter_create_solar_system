@@ -9,20 +9,17 @@ import 'package:flare_flutter/flare_actor.dart';
 void main() => runApp(MA());
 
 class Pt {
-  int i;
-  int y;
-  String nm;
-  String fl;
-  double sz;
-  double rd;
-  Color clr;
-  String ds;
-  Pt(Map<String, dynamic> d, this.clr) {
-    nm = d['name'];
+  int i, y;
+  String n, f, l, ds;
+  double s, r;
+  Color c;
+  Pt(Map<String, dynamic> d, this.c) {
+    n = d['name'];
     y = d['y'];
-    fl = d['file'];
-    sz = d['sz'];
-    rd = d['rd'];
+    f = d['file'];
+    // l = d['flr'];
+    s = d['sz'] / 11;
+    r = d['rd'] / 11;
     ds = d['desc'];
     i = d['id'];
   }
@@ -87,13 +84,8 @@ class _MAState extends State<MA> {
               builder: (context, child) {
                 return Transform(
                   transform: notifier.value,
-                  child: OverflowBox(
-
-                    maxWidth: 5000,
-                    maxHeight: 5000,
-                    child: Stack(
-                      children: pStck,
-                    ),
+                  child: Stack(
+                    children: pStck,
                   ),
                 );
               },
@@ -115,41 +107,39 @@ class Ot extends HookWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final AnimationController ctrl = useAnimationController(
+    final AnimationController c = useAnimationController(
       duration: Duration(seconds: p.y),
       lowerBound: 0,
       upperBound: 6.28,
     );
     useEffect(() {
-      ctrl.repeat();
-    }, [ctrl]);
-    double value = useAnimation(ctrl);
+      c.repeat();
+    }, [c]);
+    double v = useAnimation(c);
     return Center(
       child: Container(
-        width: p.rd,
-        height: p.rd,
+        width: p.r,
+        height: p.r,
         decoration:
-            BoxDecoration(shape: BoxShape.circle, border: Border.all(color: p.clr, width: 1)),
+            BoxDecoration(shape: BoxShape.circle, border: Border.all(color: p.c, width: 0.1)),
         child: Center(
           child: Transform(
             transform: Matrix4.translationValues(
-              p.rd / 2 * cos(value),
-              p.rd / 2 * sin(value),
+              p.r / 2 * cos(v),
+              p.r / 2 * sin(v),
               0,
             ),
             child: GestureDetector(
               onTap: () => tap(context),
               child: AnimatedContainer(
                 duration: Duration(seconds: 1),
-                width: p.sz,
-                height: p.sz,
+                width: p.s,
+                height: p.s,
                 child: RotationTransition(
-                  turns: ctrl,
+                  turns: c,
                   child: Hero(
                     tag: p.i,
-                    child: Image.asset(
-                      p.fl,
-                    ),
+                    child: Image.asset(p.f),
                   ),
                 ),
               ),
@@ -178,7 +168,7 @@ class Ot extends HookWidget {
                     child: ListView(
                       children: <Widget>[
                         Text(
-                          p.nm,
+                          p.n,
                           style: TextStyle(fontSize: 40, fontFamily: 'b'),
                         ),
                         Hero(
@@ -186,10 +176,12 @@ class Ot extends HookWidget {
                           child: Container(
                               width: 200,
                               height: 200,
-                              child: FlareActor("assets/earth.flr",
-                                  alignment: Alignment.center,
-                                  fit: BoxFit.contain,
-                                  animation: "earth")),
+                              child: FlareActor(
+                                'assets/anim.flr',
+                                alignment: Alignment.center,
+                                fit: BoxFit.contain,
+                                animation: p.n,
+                              )),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),

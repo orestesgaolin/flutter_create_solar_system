@@ -47,16 +47,23 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - data.json
+   - assets/anim.flr
    - assets/mercury.png
    - assets/venus.png
+  #  - assets/venus.flr
    - assets/earth.png
-   - assets/earth.flr
    - assets/mars.png
+  #  - assets/mars.flr
    - assets/jupiter.png
+  #  - assets/jupiter.flr
    - assets/saturn.png
+  #  - assets/saturn.flr
    - assets/uranus.png
+  #  - assets/uranus.flr
    - assets/neptune.png
+  #  - assets/neptune.flr
    - assets/pluto.png
+  #  - assets/pluto.flr
    - assets/bulb.png
    - assets/bg.png
 

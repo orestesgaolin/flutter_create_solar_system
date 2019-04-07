@@ -116,9 +116,7 @@
     "desc": "Pluto...",
     "url": "https://en.wikipedia.org/wiki/Pluto"
   },
-  "title": "\nLet's go\nfor a ride\nthrough the\nSolar System\n\nZoom out\nto explore!",
   "datasource": "https://en.wikipedia.org/wiki/Solar_System",
   "info": "All the data about Solar System planets taken from Wikipedia",
-  "bgph": "Photo by Jeremy Thomas on Unsplash",
   "bg" : "assets/bg.png"
 }
