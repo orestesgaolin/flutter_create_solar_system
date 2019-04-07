@@ -1,126 +1,123 @@
 {
   "0": {
     "i": 0,
-    "n": "Mercury",
-    "f": "assets/mercury.png",
-    "l": "assets/mercury.flr",
-    "s": 35.0,
-    "r": 200.0,
-    "y": 88,
-    "m": "Mass: 3.3011×10^23 kg (0.055 Earths)",
-    "d": "Mercury (0.4 AU from the Sun) is the closest planet to the Sun and on average, all seven other planets. The smallest planet in the Solar System (0.055 M⊕), Mercury has no natural satellites. Besides impact craters, its only known geological features are lobed ridges or rupes that were probably produced by a period of contraction early in its history. Mercury's very tenuous atmosphere consists of atoms blasted off its surface by the solar wind. Its relatively large iron core and thin mantle have not yet been adequately explained. Hypotheses include that its outer layers were stripped off by a giant impact, or that it was prevented from fully accreting by the young Sun's energy.\n\nMass: 3.3011×10^23 kg (0.055 Earths)\n\nRadius: 2,439.7±1.0 km",
-    "url": "https://en.wikipedia.org/wiki/Mercury_(planet)",
+    "n": "Sun",
+    "f": "assets/sun.png",
+    "l": "assets/sun.flr",
+    "s": 200.0,
+    "r": 150.0,
+    "y": 100,
+    "d": "The Sun is the Solar System's star and by far its most massive component. Its large mass (332,900 Earth masses), which comprises 99.86% of all the mass in the Solar System, produces temperatures and densities in its core high enough to sustain nuclear fusion of hydrogen into helium, making it a main-sequence star. This releases an enormous amount of energy, mostly radiated into space as electromagnetic radiation peaking in visible light.\n\nThe Sun is a G2-type main-sequence star. Hotter main-sequence stars are more luminous. The Sun's temperature is intermediate between that of the hottest stars and that of the coolest stars. Stars brighter and hotter than the Sun are rare, whereas substantially dimmer and cooler stars, known as red dwarfs, make up 85% of the stars in the Milky Way.\n\nMass: 332,900 Earth masses\n\nRadius: 695,700 km\n\nhttps://en.wikipedia.org/wiki/Solar_System",
+    "url": "https://en.wikipedia.org/wiki/Solar_System",
     "c" : 4288585374
   },
   "1": {
     "i": 1,
+    "n": "Mercury",
+    "f": "assets/mercury.png",
+    "l": "assets/mercury.flr",
+    "s": 35.0,
+    "r": 250.0,
+    "y": 88,
+    "d": "Mercury (0.4 AU from the Sun) is the closest planet to the Sun and on average, all seven other planets. The smallest planet in the Solar System (0.055 M⊕), Mercury has no natural satellites. Besides impact craters, its only known geological features are lobed ridges or rupes that were probably produced by a period of contraction early in its history. Mercury's very tenuous atmosphere consists of atoms blasted off its surface by the solar wind. Its relatively large iron core and thin mantle have not yet been adequately explained. Hypotheses include that its outer layers were stripped off by a giant impact, or that it was prevented from fully accreting by the young Sun's energy.\n\nMass: 3.3011×10^23 kg (0.055 Earths)\n\nRadius: 2,439.7±1.0 km",
+    "url": "https://en.wikipedia.org/wiki/Mercury_(planet)",
+    "c" : 4288585374
+  },
+  "2": {
+    "i": 2,
     "n": "Venus",
     "f": "assets/venus.png",
     "l": "assets/venus.flr",
     "s": 75.0,
     "r": 480.0,
     "y": 224,
-    "m": "Mass: 4.8675×10^24 kg (0.815 Earths)",
     "d": "Venus (0.7 AU from the Sun) is close in size to Earth (0.815 M⊕) and, like Earth, has a thick silicate mantle around an iron core, a substantial atmosphere, and evidence of internal geological activity. It is much drier than Earth, and its atmosphere is ninety times as dense. Venus has no natural satellites. It is the hottest planet, with surface temperatures over 400 °C (752 °F), most likely due to the amount of greenhouse gases in the atmosphere. No definitive evidence of current geological activity has been detected on Venus, but it has no magnetic field that would prevent depletion of its substantial atmosphere, which suggests that its atmosphere is being replenished by volcanic eruptions.\n\nMass: 4.8675×10^24 kg (0.815 Earths)\n\nRadius: 6,051.8±1.0 km",
     "url": "https://en.wikipedia.org/wiki/Venus",
     "c" : 4286141768
-
   },
-  "2": {
-    "i": 2,
+  "3": {
+    "i": 3,
     "n": "Earth",
     "f": "assets/earth.png",
     "l": "assets/earth.flr",
     "s": 80.0,
     "r": 800.0,
     "y": 365,
-    "m": "Mass: 5.97237 * 10^24 kg",
     "d": "Earth (1 AU from the Sun) is the largest and densest of the inner planets the only one known to have current geological activity, and the only place where life is known to exist. Its liquid hydrosphere is unique among the terrestrial planets, and it is the only planet where plate tectonics has been observed. Earth's atmosphere is radically different from those of the other planets, having been altered by the presence of life to contain 21% free oxygen. It has one natural satellite, the Moon, the only large satellite of a terrestrial planet in the Solar System.\n\nMass: 5.97237 * 10^24 kg\n\nRadius: 6378.1 km",
     "url": "https://en.wikipedia.org/wiki/Earth",
     "c" : 4280391411
-
   },
-  "3": {
-    "i": 3,
+  "4": {
+    "i": 4,
     "n": "Mars",
     "f": "assets/mars.png",
     "l": "assets/mars.flr",
     "s": 40.0,
     "r": 1200.0,
     "y": 687,
-    "m": "Mass: ",
     "d": "Mars (1.5 AU from the Sun) is smaller than Earth and Venus (0.107 M⊕). It has an atmosphere of mostly carbon dioxide with a surface pressure of 6.1 millibars (roughly 0.6% of that of Earth). Its surface, peppered with vast volcanoes, such as Olympus Mons, and rift valleys, such as Valles Marineris, shows geological activity that may have persisted until as recently as 2 million years ago. Its red colour comes from iron oxide (rust) in its soil. Mars has two tiny natural satellites (Deimos and Phobos) thought to be either captured asteroids, or ejected debris from a massive impact early in Mars's history.\n\nhttps://en.wikipedia.org/wiki/Mars",
     "url": "https://en.wikipedia.org/wiki/Mars",
     "c" : 4294198070
   },
-  "4": {
-    "i": 4,
+  "5": {
+    "i": 5,
     "n": "Jupiter",
     "f": "assets/jupiter.png",
     "l": "assets/jupiter.flr",
     "s": 230.0,
     "r": 1900.0,
     "y": 4333,
-    "m": "Mass: ",
     "d": "Jupiter (5.2 AU), at 318 M⊕, is 2.5 times the mass of all the other planets put together. It is composed largely of hydrogen and helium. Jupiter's strong internal heat creates semi-permanent features in its atmosphere, such as cloud bands and the Great Red Spot. Jupiter has 79 known satellites. The four largest, Ganymede, Callisto, Io, and Europa, show similarities to the terrestrial planets, such as volcanism and internal heating.Ganymede, the largest satellite in the Solar System, is larger than Mercury.\n\nMass: 1.8982×10^27 kg (317.8 Earths)\n\nRadius: 71,492 km\n\nhttps://en.wikipedia.org/wiki/Jupiter",
     "url": "https://en.wikipedia.org/wiki/Jupiter",
     "c" : 4294940672
   },
-  "5": {
-    "i": 5,
+  "6": {
+    "i": 6,
     "n": "Saturn",
     "f": "assets/saturn.png",
     "l": "assets/saturn.flr",
     "s": 230.0,
-    "r": 2400.0,
+    "r": 2600.0,
     "y": 10759,
-    "m": "Mass: ",
-    "d": "Saturn...",
+    "d": "Saturn (9.5 AU), distinguished by its extensive ring system, has several similarities to Jupiter, such as its atmospheric composition and magnetosphere. Although Saturn has 60% of Jupiter's volume, it is less than a third as massive, at 95 M⊕. Saturn is the only planet of the Solar System that is less dense than water. The rings of Saturn are made up of small ice and rock particles. Saturn has 62 confirmed satellites composed largely of ice. Two of these, Titan and Enceladus, show signs of geological activity. Titan, the second-largest moon in the Solar System, is larger than Mercury and the only satellite in the Solar System with a substantial atmosphere.\n\nMass: 5.6834×10^26 kg (95.159 Earths)\n\nRadius: 58,232 km\n\nhttps://en.wikipedia.org/wiki/Saturn",
     "url": "https://en.wikipedia.org/wiki/Saturn",
     "c" : 4294961979
-
   },
-  "6": {
-    "i": 6,
+  "7": {
+    "i": 7,
     "n": "Uranus",
     "f": "assets/uranus.png",
     "l": "assets/uranus.flr",
     "s": 200.0,
-    "r": 2900.0,
+    "r": 3100.0,
     "y": 30688,
-    "m": "Mass: ",
-    "d": "Uranus...",
+    "d": "Uranus (19.2 AU), at 14 M⊕, is the lightest of the outer planets. Uniquely among the planets, it orbits the Sun on its side; its axial tilt is over ninety degrees to the ecliptic. It has a much colder core than the other giant planets and radiates very little heat into space.\n\nUranus has 27 known satellites, the largest ones being Titania, Oberon, Umbriel, Ariel, and Miranda.\n\nMass: 8.6810×10^25 kg (14.536 Earths)\n\nRadius: 25,559 km\n\nhttps://en.wikipedia.org/wiki/Uranus",
     "url": "https://en.wikipedia.org/wiki/Uranus",
     "c" : 4280391411
-
   },
-  "7": {
-    "i": 7,
+  "8": {
+    "i": 8,
     "n": "Neptune",
     "f": "assets/neptune.png",
     "l": "assets/neptune.flr",
     "s": 200.0,
-    "r": 3300.0,
+    "r": 3600.0,
     "y": 60182,
-    "m": "Mass: ",
-    "d": "Neptune...",
+    "d": "Neptune (30.1 AU), though slightly smaller than Uranus, is more massive (17 M⊕) and hence more dense. It radiates more internal heat, but not as much as Jupiter or Saturn.\n\nNeptune has 14 known satellites. The largest, Triton, is geologically active, with geysers of liquid nitrogen.\n\nTriton is the only large satellite with a retrograde orbit. Neptune is accompanied in its orbit by several minor planets, termed Neptune trojans, that are in 1:1 resonance with it.",
     "url": "https://en.wikipedia.org/wiki/Neptune",
     "c" : 4278238420
-
   },
-  "8": {
-    "i": 8,
+  "9": {
+    "i": 9,
     "n": "Pluto",
     "f": "assets/pluto.png",
     "l": "assets/pluto.flr",
     "s": 50.0,
-    "r": 3700.0,
+    "r": 4100.0,
     "y": 90000,
-    "m": "Mass: ",
-    "d": "Pluto...",
+    "d": "Pluto... you're still a planet in our hearts.\n\nThe dwarf planet Pluto (39 AU average) is the largest known object in the Kuiper belt. When discovered in 1930, it was considered to be the ninth planet; this changed in 2006 with the adoption of a formal definition of planet. Pluto has a relatively eccentric orbit inclined 17 degrees to the ecliptic plane and ranging from 29.7 AU from the Sun at perihelion (within the orbit of Neptune) to 49.5 AU at aphelion. Pluto has a 3:2 resonance with Neptune, meaning that Pluto orbits twice round the Sun for every three Neptunian orbits. Kuiper belt objects whose orbits share this resonance are called plutinos.\n\nhttps://en.wikipedia.org/wiki/Pluto",
     "url": "https://en.wikipedia.org/wiki/Pluto",
     "c" : 4286141768
-
   },
   "datasource": "https://en.wikipedia.org/wiki/Solar_System",
   "info": "All the data about Solar System planets taken from Wikipedia",

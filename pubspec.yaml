@@ -1,16 +1,5 @@
 name: SolarSystem
 description: A new Flutter project.
-
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
 environment:
@@ -19,7 +8,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  rect_getter: 0.0.1
   flutter_hooks: ^0.2.1
   matrix_gesture_detector: ^0.1.0
   flare_flutter: ^1.3.7
@@ -32,21 +20,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
    - data.json
+   - assets/sun.flr
    - assets/mercury.png
    - assets/mercury.flr
    - assets/venus.png
@@ -58,23 +39,19 @@ flutter:
    - assets/jupiter.png
    - assets/jupiter.flr
    - assets/saturn.png
-  #  - assets/saturn.flr
+   - assets/saturn.flr
    - assets/uranus.png
-  #  - assets/uranus.flr
+   - assets/uranus.flr
    - assets/neptune.png
-  #  - assets/neptune.flr
+   - assets/neptune.flr
    - assets/pluto.png
    - assets/pluto.flr
-   - assets/bulb.png
    - assets/bg.png
 
   fonts:
     - family: b
       fonts:
         - asset: fonts/BungeeInline-Regular.ttf
-    - family: e
-      fonts:
-        - asset: fonts/Enriqueta-Regular.ttf
     - family: j
       fonts:
         - asset: fonts/Jura-Light.ttf
