@@ -20,8 +20,8 @@ Planetary data was taken from Wikipedia.
 
 - I had to give up on code quality - there are some dirty hacks and workarounds applied to fit in 5 KB limit
 - Most of the data is kept in `data.json` file and then accessed from dynamic Map - usually you would use some kind of [json serialization mechanism](https://flutter.dev/docs/development/data-and-backend/json)
-- Minified code fits in single line with no extra spaces, single character names and badly formatted constructors - you wouldn't do this typically in jor day to day job ;)
-- Everything is stored in a single file
+- Minified code fits in single line with no extra spaces, single character names and badly formatted constructors - you wouldn't do this typically in jor day to day job, would you? ;)
+- Everything is stored in a single `main.dart` file
 - No extracted custom widgets etc. and only couple of functions
 - [flutter_hooks](https://pub.dartlang.org/packages/flutter_hooks) to the rescue - it removed unnecessary boilerplate when using animation controllers
 
