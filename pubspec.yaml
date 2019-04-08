@@ -28,23 +28,14 @@ flutter:
   assets:
    - data.json
    - assets/sun.flr
-   - assets/mercury.png
    - assets/mercury.flr
-   - assets/venus.png
    - assets/venus.flr
-   - assets/earth.png
    - assets/earth.flr
-   - assets/mars.png
    - assets/mars.flr
-   - assets/jupiter.png
    - assets/jupiter.flr
-   - assets/saturn.png
    - assets/saturn.flr
-   - assets/uranus.png
    - assets/uranus.flr
-   - assets/neptune.png
    - assets/neptune.flr
-   - assets/pluto.png
    - assets/pluto.flr
    - assets/bg.png
 
